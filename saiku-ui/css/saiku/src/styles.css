@@ -1165,10 +1165,7 @@ textarea, select {
 }
 
 .dialog_calculated-member .form-group-inline .btn-groups {
-	padding-top: 13px;
-	padding-bottom: 13px;
-	padding-left: 70px;
-	padding-right:0px;
+	padding: 13px 0px 13px 70px;
 }
 
 .dialog_calculated-member .form-group-inline .btn-groups .form_button {
@@ -1321,9 +1318,8 @@ textarea, select {
 	background-position: 7px 7px;
 }
 .workspace_toolbar ul li a.about {
-	background-position: -1702px 5px;
-	opacity: 0.6;
-
+	background-image: url('../../../images/src/information.png');
+	background-position: 7px 7px;
 }
 .ui-menu {
 	list-style:none;
@@ -1638,6 +1634,10 @@ a.disabled_toolbar:hover {
 	background-image: url('../../../images/src/zoom.png');
 	background-position: 7px 7px;
 }
+.workspace_toolbar .workspace_report_titles {
+	background-image: url('../../../images/src/text.png');
+	background-position: 7px 7px;
+}
 
 .workspace_toolbar .switch_to_mdx {
 	background-image: url('../../../images/src/switch_to_mdx.png');
@@ -1930,9 +1930,8 @@ a.disabled_toolbar:hover {
 	height: 32px;
 	background-position: center;
 }
-
-.query_toolbar a.sunburst:hover,
-.query_toolbar a.sunburst.on {
+.query_toolbar a.multiplesunburst:hover,
+.query_toolbar a.multiplesunburst.on {
 	background: url('../../../images/chart/multiplesunburst.png') no-repeat 21px -1px;;
 	height: 32px;
 	background-position: center;
@@ -2712,10 +2711,7 @@ form {
 }
 
 .minimal_padding {
-	padding-top:3px;
-	padding-bottom:3px;
-	padding-left:6px;
-	padding-right:6px;
+	padding: 3px 6px;
 }
 
 .about-us a {
