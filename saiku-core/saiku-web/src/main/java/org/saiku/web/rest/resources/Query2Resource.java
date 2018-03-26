@@ -458,7 +458,7 @@ public class Query2Resource {
             Long start = (new Date()).getTime();
             if (position == null) {
                 rs = thinQueryService.drillthrough(queryName, maxrows, returns);
-                rsc = RestUtil.convert(rs);
+                //rsc = RestUtil.convert(rs);
             } else {
                 String[] positions = position.split(":");
                 List<Integer> cellPosition = new ArrayList<>();
@@ -467,9 +467,11 @@ public class Query2Resource {
                     Integer pInt = Integer.parseInt(p);
                     cellPosition.add(pInt);
                 }
-                DrillThroughResult drillthrough = thinQueryService.drillthroughWithCaptions(queryName, cellPosition, maxrows, returns);
-                rsc = RestUtil.convert(drillthrough);
+                //DrillThroughResult drillthrough = thinQueryService.drillthroughWithCaptions(queryName, cellPosition, maxrows, returns);
+                //rsc = RestUtil.convert(drillthrough);
+                rs = thinQueryService.drillthrough(queryName, cellPosition, maxrows, returns);
             }
+            rsc = RestUtil.convert(rs);
             Long runtime = (new Date()).getTime()- start;
             rsc.setRuntime(runtime.intValue());
 

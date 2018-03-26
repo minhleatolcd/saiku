@@ -290,35 +290,37 @@ var Table = Backbone.View.extend({
                     _.each(dimension.hierarchies, function(hierarchy) {
                         if (hierarchy.uniqueName == h) {
                             _.each(hierarchy.levels, function(level) {
-                                items[level.name] = {
-                                    name: level.caption,
-                                    payload: JSON.stringify({
-                                        "hierarchy"     : h,
-                                        uniquename    : level.uniqueName,
-                                        type          : "level",
-                                        action        : "add"
-                                    })
-                                };
-                                if(_.indexOf(used_levels, level.uniqueName) > -1) {
-                                    items[level.name].disabled = true;
-                                    items["remove-" + level.name] = {
+                                if (level.visible) {
+                                    items[level.name] = {
                                         name: level.caption,
                                         payload: JSON.stringify({
-                                            "hierarchy"     :  h,
+                                            "hierarchy"     : h,
                                             uniquename    : level.uniqueName,
                                             type          : "level",
-                                            action        : "delete"
+                                            action        : "add"
                                         })
                                     };
+                                    if(_.indexOf(used_levels, level.uniqueName) > -1) {
+                                        items[level.name].disabled = true;
+                                        items["remove-" + level.name] = {
+                                            name: level.caption,
+                                            payload: JSON.stringify({
+                                                "hierarchy"     :  h,
+                                                uniquename    : level.uniqueName,
+                                                type          : "level",
+                                                action        : "delete"
+                                            })
+                                        };
 
+                                    }
+                                    if (level.uniqueName == l) {
+                                        l_caption = level.caption;
+                                        l_name = level.name;
+                                    }
+                                    items["keep-" + level.name] = items[level.name];
+                                    items["include-" + level.name] = JSON.parse(JSON.stringify(items[level.name]));
+                                    items["keep-" + level.name].payload = keep_payload + "," + items[level.name].payload;
                                 }
-                                if (level.uniqueName == l) {
-                                    l_caption = level.caption;
-                                    l_name = level.name;
-                                }
-                                items["keep-" + level.name] = items[level.name];
-                                items["include-" + level.name] = JSON.parse(JSON.stringify(items[level.name]));
-                                items["keep-" + level.name].payload = keep_payload + "," + items[level.name].payload;
                             });
                         }
                     });

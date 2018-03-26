@@ -656,7 +656,10 @@ var SelectionsModal = Modal.extend({
                 } else {
                     var measuresArray = self.workspace.query.model.queryModel.details.measures;
                     for (var j = 0; j < measuresArray.length; j++) {
-                        totalsArray.push($('#all_measures_select').val());
+                        var totalsSelected = $('#all_measures_select').val();
+                        if (totalsSelected && totalsSelected != 'nil') {
+                            totalsArray.push(totalsSelected);
+                        }
                     }
                 }
 
